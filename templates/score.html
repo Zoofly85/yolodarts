@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dart Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dart Score</h1>
+        <div class="video-container">
+            <img src="{{ url_for('video_feed', camera_id=1, draw_scoring=false) }}" alt="Dartboard Feed">
+        </div>
+        <div id="score-display">
+            <h2>Best Score: <span id="best-score">-</span></h2>
+            <h3>Camera Scores:</h3>
+            <ul id="camera-scores">
+                <li>Camera 1: <span id="camera-1-score">-</span></li>
+                <li>Camera 2: <span id="camera-2-score">-</span></li>
+                <li>Camera 3: <span id="camera-3-score">-</span></li>
+            </ul>
+            <p id="dart-location">No dart detected</p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

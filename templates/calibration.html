@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Darts - Calibration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calibration</h1>
+        <div class="camera-grid">
+            {% for i in range(3) %}
+            <div class="camera-box">
+                {% if camera_status[i] %}
+                <img id="camera{{ i + 1 }}" src="{{ url_for('video_feed', camera_id=i+1) }}" alt="Camera {{ i + 1 }}">
+                <button onclick="calibrate({{ i + 1 }})">Calibrate Camera {{ i + 1 }}</button>
+                <div id="calibration-status-{{ i + 1 }}"></div>
+                {% else %}
+                <div class="camera-error">Camera {{ i + 1 }} not available</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <button class="back-button" onclick="location.href='{{ url_for('index') }}'">Back to Home</button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
